@@ -9,9 +9,9 @@ pyb.delay(10)
 
 if sp.value() == 1:
 	uart6 = UART(6)
-	uart6.init(115200, read_buf_len = 256)
+	uart6.init(9600, read_buf_len = 256)
 	uart3 = UART(3)                         
-	uart3.init(115200, read_buf_len = 256)  # Try higher values if necessary
+	uart3.init(9600, read_buf_len = 256)  # Try higher values if necessary
 
 	while True:
 		nrx = uart3.any()  # Count available characters
@@ -24,9 +24,10 @@ if sp.value() == 1:
 	
 else:
 	uart6 = UART(6)
-	uart6.init(115200)
+	uart6.init(9600)
 	uos.dupterm(uart6)  # duplicate repl on UART(6)
 
 	pyb.main('main.py') # main script to run after this one
 
 	pyb.usb_mode('CDC') # act as a serial (CDC) and not a storage device (MSC)
+
